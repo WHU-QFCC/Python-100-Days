@@ -1,4 +1,5 @@
 import pygame
+import time
 
 EMPTY = 0
 BLACK = 1
@@ -44,6 +45,27 @@ class RenjuBoard(object):
                     pos = [40 * (col + 1), 40 * (row + 1)]
                     pygame.draw.circle(screen, ccolor, pos, 20, 0)
 
+    def is_over(self, row, col, is_black):
+        mark = self._board[row][col]
+        f = [[0, -1], [0, 1], [-1, 0], [1, 0], [-1, -1], [1, 1], [1, -1], [-1, 1]]
+        count = 1
+        for idx, item in enumerate(f):
+            if idx % 2 == 0:
+                count = 1
+            fx, fy = col, row
+            while True:
+                fx += item[0]
+                fy += item[1]
+                if self._board[fy][fx] == mark:
+                    count += 1
+                    if count == 5:
+                        piece = "白子" if is_black else "黑子"
+                        print("**********%s赢了**********" % piece)
+                        return True
+                else:
+                    break
+        return False
+
 
 def main():
     board = RenjuBoard()
@@ -67,10 +89,16 @@ def main():
                 row = round((y - 40) / 40)
                 col = round((x - 40) / 40)
                 if board.move(row, col, is_black):
-                    is_black = not is_black
                     screen.fill([255, 255, 0])
                     board.draw(screen)
                     pygame.display.flip()
+                    is_black = not is_black
+                    if board.is_over(row, col, is_black):
+                        board.reset()
+                        time.sleep(2)
+                        screen.fill([255, 255, 0])
+                        board.draw(screen)
+                        pygame.display.flip()
     pygame.quit()
 
 
