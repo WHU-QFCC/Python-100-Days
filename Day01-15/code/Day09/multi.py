@@ -58,9 +58,25 @@ class Son(Father, Monk, Musician):
         Musician.__init__(self, name)
 
 
+class Son2(Musician, Monk, Father):
+
+    def __init__(self, name):
+        Musician.__init__(self, name)
+        Monk.__init__(self, name)
+        Father.__init__(self, name)
+
 son = Son('王大锤')
 son.gamble()
 # 调用继承自Father的eat方法
+son.eat()
+son.chant()
+son.play_piano()
+
+print('------------------------------------------------------------------')
+
+son = Son2('李元芳')
+son.gamble()
+# 调用继承自Musician的eat方法
 son.eat()
 son.chant()
 son.play_piano()

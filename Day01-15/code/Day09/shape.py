@@ -60,5 +60,5 @@ if __name__ == '__main__':
     shapes = [Circle(5), Circle(3.2), Rect(3.2, 6.3)]
     for shape in shapes:
         print(shape)
-        print('周长:', shape.perimeter())
-        print('面积:', shape.area())
+        print('周长:%.2f' % shape.perimeter())
+        print('面积:%.2f' % shape.area())
