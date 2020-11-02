@@ -36,8 +36,16 @@
 # str = 'qwertyuiopqwertyuiopqwer'
 # print(str.find('er'), str.rfind('er'))
 
-str = '1234'
-print(str[::-1])
+# str = '1234'
+# print(str[::-1])
 
 # yh = [[]] * 4
 # print(yh)
+
+
+# 测试使用map()
+def getPowerOfTwo(x):
+    return x * x
+
+li = map(getPowerOfTwo, [1, 2, 3])
+print(list(li))
