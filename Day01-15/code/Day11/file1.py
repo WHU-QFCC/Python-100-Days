@@ -1,3 +1,5 @@
+
+# _*_ coding: utf8 _*_
 """
 从文本文件中读取数据
 
@@ -10,19 +12,21 @@ import time
 
 
 def main():
+    path = r'D:\WorkSpace\GitHub\Python-100-Days\Day01-15\code\Day11\致橡树.txt'
+
     # 一次性读取整个文件内容
-    with open('致橡树.txt', 'r', encoding='utf-8') as f:
+    with open(path, 'r', encoding='utf-8') as f:
         print(f.read())
 
     # 通过for-in循环逐行读取
-    with open('致橡树.txt', mode='r') as f:
+    with open(path, mode='r', encoding='utf-8') as f:
         for line in f:
             print(line, end='')
-            time.sleep(0.5)
+            time.sleep(0.25)
     print()
 
     # 读取文件按行读取到列表中
-    with open('致橡树.txt') as f:
+    with open(path, encoding='utf-8') as f:
         lines = f.readlines()
     print(lines)
     

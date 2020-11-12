@@ -23,4 +23,5 @@ with open('prime.txt', 'w') as f:
     for num in range(2, 100):
         if is_prime(num):
             f.write(str(num) + '\n')
+f.close()
 print('写入完成!')
